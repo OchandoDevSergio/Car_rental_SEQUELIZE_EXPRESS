@@ -28,19 +28,19 @@ carsController.getAllCars = async (req, res) => {
 
 }
 
-// carsController.createNewCar = async (req, res) => {
+carsController.createNewCar = async (req, res) => {
 
-//     return res.send("Hola, has llamado a cars con un post,,,,");
-// }
+    return res.send("Hola, has llamado a cars con un post,,,,");
+}
 
-// carsController.modifyCar = async (req, res) => {
+carsController.modifyCar = async (req, res) => {
 
-//     return res.send("Hola, has llamado a cars con un put,,,,");
-// }
+    return res.send("Hola, has llamado a cars con un put,,,,");
+}
 
-// carsController.deleteCar = async (req, res) => {
+carsController.deleteCar = async (req, res) => {
 
-//     return res.send("Hola, has llamado a cars con un delete,,,,");
-// }
+    return res.send("Hola, has llamado a cars con un delete,,,,");
+}
 
 module.exports = carsController;

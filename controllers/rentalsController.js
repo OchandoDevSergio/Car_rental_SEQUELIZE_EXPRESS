@@ -1,22 +1,44 @@
 
+const { Rental } = require('../models');
+
 const rentalsController = {};
 
-rentalsController.getAllUsers = async (req, res) => {
+rentalsController.getAllRentals = async (req, res) => {
 
-    return res.send("Hola, has llamado a rentals con un get,,,,");
+    try {
+
+        const allRentals = await Rental.findAll();
+
+        return res.json({
+            success: true,
+            message: "Datos de todos los alquileres recuperados",
+            data: allRentals,
+        });
+
+
+    } catch (error) {
+
+        return res.status(500).json({
+            success: false,
+            message: "Los datos no han podido ser recuperados",
+            error: error.message,
+        });
+
+    }
+
 }
 
-rentalsController.createNewUser = async (req, res) => {
+rentalsController.createNewRental = async (req, res) => {
 
     return res.send("Hola, has llamado a rentals con un post,,,,");
 }
 
-rentalsController.modifyUser = async (req, res) => {
+rentalsController.modifyRental = async (req, res) => {
 
     return res.send("Hola, has llamado a rentals con un put,,,,");
 }
 
-rentalsController.deleteUser = async (req, res) => {
+rentalsController.deleteRental = async (req, res) => {
 
     return res.send("Hola, has llamado a rentals con un delete,,,,");
 }

@@ -4,8 +4,8 @@ const router = require('express').Router();
 const carsController = require('../controllers/carsController');
 
 router.get('/', carsController.getAllCars);
-// router.post('/', carsController.createNewUser);
-// router.put('/', carsController.modifyUser);
-// router.delete('/', carsController.deleteUser);
+router.post('/', carsController.createNewCar);
+router.put('/', carsController.modifyCar);
+router.delete('/', carsController.deleteCar);
 
 module.exports = router;

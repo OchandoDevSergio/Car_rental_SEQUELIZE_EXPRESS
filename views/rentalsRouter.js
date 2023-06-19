@@ -3,9 +3,9 @@ const router = require('express').Router();
 
 const rentalsController = require('../controllers/rentalsController');
 
-router.get('/', rentalsController.getAllUsers);
-router.post('/', rentalsController.createNewUser);
-router.put('/', rentalsController.modifyUser);
-router.delete('/', rentalsController.deleteUser);
+router.get('/', rentalsController.getAllRentals);
+router.post('/', rentalsController.createNewRental);
+router.put('/', rentalsController.modifyRental);
+router.delete('/', rentalsController.deleteRental);
 
 module.exports = router;
