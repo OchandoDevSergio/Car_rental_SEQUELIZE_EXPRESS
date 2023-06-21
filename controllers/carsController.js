@@ -44,10 +44,8 @@ carsController.deleteCar = async (req, res) => {
     let body = req.body;
 
     try {
-        // const carId = req.params.id;
         const deleteCar = await Car.destroy({
           where: {
-            // id: carId,
             id: body.id
           },
         });

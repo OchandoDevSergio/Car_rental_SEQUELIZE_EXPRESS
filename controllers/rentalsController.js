@@ -43,10 +43,8 @@ rentalsController.deleteRental = async (req, res) => {
     let body = req.body;
 
     try {
-        // const rentalId = req.params.id;
         const deleteRental = await Rental.destroy({
           where: {
-            // id: rentalId,
             id: body.id
           },
         });
