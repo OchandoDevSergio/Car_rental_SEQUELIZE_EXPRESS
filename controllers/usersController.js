@@ -40,7 +40,30 @@ usersController.modifyUser = async (req, res) => {
 
 usersController.deleteUser = async (req, res) => {
 
-    return res.send("Hola, has llamado a users con un delete,,,,");
+    let body = req.body;
+
+    try {
+        // const userId = req.params.id;
+        const deleteUser = await User.destroy({
+          where: {
+            // id: userId,
+            id: body.id
+          },
+        });
+        return res.json({
+          success: true,
+          message: "El cliente ha sido eliminado",
+          data: deleteUser,
+        });
+      } catch (error) {
+        return res.status(500).json({
+          success: false,
+          message: "El cliente no ha podido ser eliminado",
+          error: error.message,
+        });
+      }
+    
+
 }
 
 module.exports = usersController;

@@ -40,7 +40,30 @@ rentalsController.modifyRental = async (req, res) => {
 
 rentalsController.deleteRental = async (req, res) => {
 
-    return res.send("Hola, has llamado a rentals con un delete,,,,");
+    let body = req.body;
+
+    try {
+        // const rentalId = req.params.id;
+        const deleteRental = await Rental.destroy({
+          where: {
+            // id: rentalId,
+            id: body.id
+          },
+        });
+        return res.json({
+          success: true,
+          message: "El alquiler ha sido eliminado",
+          data: deleteRental,
+        });
+      } catch (error) {
+        return res.status(500).json({
+          success: false,
+          message: "El alquiler no ha podido ser eliminado",
+          error: error.message,
+        });
+      }
+    
+
 }
 
 module.exports = rentalsController;
