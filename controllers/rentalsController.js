@@ -29,8 +29,25 @@ rentalsController.getAllRentals = async (req, res) => {
 }
 
 rentalsController.createNewRental = async (req, res) => {
+  try {
 
-    return res.send("Hola, has llamado a rentals con un post,,,,");
+    const newRental = await Rental.create({
+      user_id: req.body.user_id,
+      car_id: req.body.car_id,
+      rental_date: req.body.rental_date,
+      return_date: req.body.return_date,
+      price: req.body.price
+    });
+
+    return res.send(newRental);
+
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "No ha sido posible crear el alquiler",
+      error: error.message,
+    });
+  }
 }
 
 rentalsController.modifyRental = async (req, res) => {

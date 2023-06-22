@@ -29,8 +29,23 @@ carsController.getAllCars = async (req, res) => {
 }
 
 carsController.createNewCar = async (req, res) => {
+  try {
 
-    return res.send("Hola, has llamado a cars con un post,,,,");
+    const newCar = await Car.create({
+      plate_number: req.body.plate_number,
+      model: req.body.model,
+      year: req.body.year,
+    });
+
+    return res.send(newCar);
+
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "No ha sido posible crear el coche",
+      error: error.message,
+    });
+  }
 }
 
 carsController.modifyCar = async (req, res) => {
