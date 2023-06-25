@@ -49,8 +49,37 @@ carsController.createNewCar = async (req, res) => {
 }
 
 carsController.modifyCar = async (req, res) => {
+  let body = req.body;
 
-    return res.send("Hola, has llamado a cars con un put,,,,");
+  try {
+
+      const updateCar = await Car.update(
+        {
+          plate_number: req.body.plate_number,
+          model: req.body.model,
+          year: req.body.year
+      },
+      {
+                where: {
+          id: body.id
+        }
+      }
+      );
+
+
+      return res.json({
+        success: true,
+        message: "El coche ha sido actualizado",
+        data: updateCar,
+      });
+
+  } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "No se ha podido actualizar los datos del coche",
+        error: error.message,
+      }); 
+  }
 }
 
 carsController.deleteCar = async (req, res) => {
