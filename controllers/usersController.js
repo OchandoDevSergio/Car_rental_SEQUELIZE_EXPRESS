@@ -69,7 +69,39 @@ usersController.createNewUser = async (req, res) => {
 };
 
 usersController.modifyUser = async (req, res) => {
-  return res.send("Hola, has llamado a users con un put,,,,");
+  let body = req.body;
+
+  try {
+
+      const updateUser = await User.update(
+        {
+          name: req.body.name,
+          surnames: req.body.surnames,
+          dni: req.body.dni,
+          email: req.body.email,
+          phone: req.body.phone
+      },
+      {
+                where: {
+          id: body.id
+        }
+      }
+      );
+
+
+      return res.json({
+        success: true,
+        message: "El cliente ha sido actualizado",
+        data: updateUser,
+      });
+
+  } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "No se ha podido actualizar los datos del usuario",
+        error: error.message,
+      }); 
+  }
 };
 
 usersController.deleteUser = async (req, res) => {
