@@ -51,8 +51,39 @@ rentalsController.createNewRental = async (req, res) => {
 }
 
 rentalsController.modifyRental = async (req, res) => {
+  let body = req.body;
 
-    return res.send("Hola, has llamado a rentals con un put,,,,");
+  try {
+
+      const updateRental = await Rental.update(
+        {
+          user_id: req.body.user_id,
+          car_id: req.body.car_id,
+          rental_date: req.body.rental_date,
+          return_date: req.body.return_date,
+          price: req.body.price
+      },
+      {
+                where: {
+          id: body.id
+        }
+      }
+      );
+
+
+      return res.json({
+        success: true,
+        message: "El alquiler ha sido actualizado",
+        data: updateRental,
+      });
+
+  } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "No se ha podido actualizar los datos del alquiler",
+        error: error.message,
+      }); 
+  }
 }
 
 rentalsController.deleteRental = async (req, res) => {
