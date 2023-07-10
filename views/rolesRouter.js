@@ -2,16 +2,17 @@
 const router = require('express').Router();
 
 const auth = require('../middlewares/tokenVerify');
+const isAdmin = require('../middlewares/adminroleVerify');
 
 const rolesController = require('../controllers/rolesController');
 
 //para este sí deberías de ser admin....
-router.get('/', auth, rolesController.getAllRoles);
+router.get('/', auth, isAdmin, rolesController.getAllRoles);
 //para este sí deberías de ser admin....
-router.post('/', auth, rolesController.createNewRole);
+router.post('/', auth, isAdmin, rolesController.createNewRole);
 //para este sí deberías de ser admin....
-router.put('/', auth, rolesController.modifyRole);
+router.put('/', auth, isAdmin, rolesController.modifyRole);
 //para este sí deberías de ser admin....
-router.delete('/', auth, rolesController.deleteRole);
+router.delete('/', auth, isAdmin, rolesController.deleteRole);
 
 module.exports = router;

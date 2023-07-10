@@ -42,13 +42,14 @@ usersController.createNewUser = async (req, res) => {
       return res.json({
         success: true,
         message:
-          "La contraseña debe tener una mayuscula, una minuscula y un número. Su longitud nunca puede ser inferior a 4.",
+          "La contraseña debe tener una mayúscula, una minúscula y un número. Su longitud nunca puede ser inferior a 4.",
       });
     }
 
     const newPassword = bcrypt.hashSync(req.body.password, 8);
 
     const newUser = await User.create({
+      role_id: req.body.role_id,
       name: req.body.name,
       surnames: req.body.surnames,
       dni: req.body.dni,
@@ -75,6 +76,7 @@ usersController.modifyUser = async (req, res) => {
 
       const updateUser = await User.update(
         {
+          role_id: req.body.role_id,
           name: req.body.name,
           surnames: req.body.surnames,
           dni: req.body.dni,

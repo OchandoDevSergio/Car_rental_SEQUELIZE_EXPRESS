@@ -12,14 +12,18 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert("Users", [
+    await queryInterface.bulkInsert("Roles", [
       {
         id: 1,
         name: "Administrator",
+        createdAt: "2023-07-10 19:51:00",
+        updatedAt: "2023-07-10 19:51:00",
       },
       {
         id: 2,
         name: "Customer",
+        createdAt: "2023-07-10 19:51:00",
+        updatedAt: "2023-07-10 19:51:00",
       },
     ]);
   },
