@@ -1,11 +1,15 @@
 
 const router = require('express').Router();
 
+const auth = require('../middlewares/tokenVerify');
+
 const usersController = require('../controllers/usersController');
 
-router.get('/', usersController.getAllUsers);
+//para este sí deberías de ser admin....
+router.get('/', auth, usersController.getAllUsers);
 router.post('/', usersController.createNewUser);
-router.put('/', usersController.modifyUser);
-router.delete('/', usersController.deleteUser);
+router.put('/', auth, usersController.modifyUser);
+//para este sí deberías de ser admin....
+router.delete('/', auth, usersController.deleteUser);
 
 module.exports = router;
