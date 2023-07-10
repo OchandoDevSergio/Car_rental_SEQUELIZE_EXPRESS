@@ -15,6 +15,7 @@ module.exports = {
       await queryInterface.bulkInsert("Users", [
         {
           id: 1,
+          role_id: 2,
           name: "Alberto",
           surnames: "Castillo Blasco",
           dni: "11111111A",
@@ -26,6 +27,7 @@ module.exports = {
         },
         {
           id: 2,
+          role_id: 2,
           name: "Cesar",
           surnames: "Mayoral Silvestre",
           dni: "22222222B",
@@ -37,6 +39,7 @@ module.exports = {
         },
         {
           id: 3,
+          role_id: 2,
           name: "Jose",
           surnames: "Escamilla Valles",
           dni: "33333333C",
@@ -48,11 +51,24 @@ module.exports = {
         },
         {
           id: 4,
+          role_id: 2,
           name: "Miguel",
           surnames: "Revert Vaquero",
           dni: "44444444D",
           email: "migrev@mail.com",
           phone: 644444444,
+          password: "$2b$08$I1k1LFIUtwCrJV9RO8f/Su2Du0d/oryyyqjU7aIchRWdW30raPZx6",
+          createdAt: "2023-06-17 00:00:00",
+          updatedAt: "2023-06-17 00:00:00",
+        },
+        {
+          id: 5,
+          role_id: 1,
+          name: "Sergio",
+          surnames: "Martí Silvestre",
+          dni: "55555555E",
+          email: "sergmar@mail.com",
+          phone: 655555555,
           password: "$2b$08$I1k1LFIUtwCrJV9RO8f/Su2Du0d/oryyyqjU7aIchRWdW30raPZx6",
           createdAt: "2023-06-17 00:00:00",
           updatedAt: "2023-06-17 00:00:00",
