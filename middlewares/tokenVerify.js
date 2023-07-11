@@ -15,7 +15,7 @@ const auth = (req, res, next) => {
     const decoded = jwt.verify(token, "kant");
 
     req.userId = decoded.userId;
-    req.email = decoded.email;
+    req.roleId = decoded.roleId;
 
     next();
   } catch (error) {

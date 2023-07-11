@@ -8,7 +8,7 @@ const authController = {};
 //Esta funcion valdrá para poder hacer un login, nos devolverá un token
 authController.login = async (req, res) => {
     try {
-      //Pillamos email y password
+      //Recogemos email y password
       const email = req.body.email;
       const password = req.body.password;
 
@@ -17,6 +17,8 @@ authController.login = async (req, res) => {
           email: email,
         },
       });
+
+      console.log("soy user.......", user)
   
       if (!user) {
         return res.status(501).json({
@@ -40,13 +42,15 @@ authController.login = async (req, res) => {
         {
           userId: user.id,
           userName: user.name,
-          email: user.email,
+          roleId: user.role_id
         },
         "kant",
         {
           expiresIn: "4h",
         }
       );
+
+      console.log(user.role_id);
   
       return res.json({
         success: true,
