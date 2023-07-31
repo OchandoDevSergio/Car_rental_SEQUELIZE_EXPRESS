@@ -1,3 +1,4 @@
+const cors = require("cors");
 
 const express = require("express");
 
@@ -12,6 +13,9 @@ app.use(express.json());
 
 app.use(router);
 
+app.use(cors({
+    origin: 'http://localhost:5000/',////¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+}));
 
 app.listen(PORT, ()=>{
     console.log(`Servidor levantado y a la escucha en el puerto ${PORT}`);
