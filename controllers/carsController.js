@@ -35,6 +35,7 @@ carsController.createNewCar = async (req, res) => {
       plate_number: req.body.plate_number,
       model: req.body.model,
       year: req.body.year,
+      picture: req.body.picture
     });
 
     return res.send(newCar);
@@ -57,7 +58,8 @@ carsController.modifyCar = async (req, res) => {
         {
           plate_number: req.body.plate_number,
           model: req.body.model,
-          year: req.body.year
+          year: req.body.year,
+          picture: req.body.picture
       },
       {
                 where: {
