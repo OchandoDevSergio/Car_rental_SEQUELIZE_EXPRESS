@@ -72,6 +72,8 @@ usersController.createNewUser = async (req, res) => {
 usersController.modifyUser = async (req, res) => {
   let body = req.body;
 
+  console.log(req.body.role_id);
+
   try {
 
       const updateUser = await User.update(
@@ -90,11 +92,17 @@ usersController.modifyUser = async (req, res) => {
       }
       );
 
+      const dataAnswer = {
+        roleId: req.body.role_id,
+        userId: body.id,
+        userName: req.body.name
+      }
+      
 
       return res.json({
         success: true,
         message: "El cliente ha sido actualizado",
-        data: updateUser,
+        data: dataAnswer,
       });
 
   } catch (error) {
