@@ -42,7 +42,11 @@ authController.login = async (req, res) => {
         {
           userId: user.id,
           userName: user.name,
-          roleId: user.role_id
+          roleId: user.role_id,
+          userSurnames: user.surnames,
+          userPhone: user.phone,
+          userDni: user.dni,
+          userEmail: user.email
         },
         "kant",
         {

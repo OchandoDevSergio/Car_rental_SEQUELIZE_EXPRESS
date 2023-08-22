@@ -95,7 +95,12 @@ usersController.modifyUser = async (req, res) => {
       const dataAnswer = {
         roleId: req.body.role_id,
         userId: body.id,
-        userName: req.body.name
+        userName: req.body.name,
+        userSurnames: req.body.surnames,
+        userPhone: req.body.phone,
+        userDni: req.body.dni,
+        userEmail: req.body.email
+        
       }
       
 
