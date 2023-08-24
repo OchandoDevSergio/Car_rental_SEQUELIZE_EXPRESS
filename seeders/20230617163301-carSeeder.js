@@ -49,6 +49,24 @@ module.exports = {
         createdAt: "2023-06-17 00:00:00",
         updatedAt: "2023-06-17 00:00:00",
       },
+      {
+        id: 5,
+        plate_number: "1555RRR",
+        model: "Audi a4",
+        year: 2022,
+        picture: "https://i.ibb.co/8DCvh3f/audi-a4.jpg",
+        createdAt: "2023-08-24 21:12:58",
+        updatedAt: "2023-08-24 21:12:58",
+      },
+      {
+        id: 6,
+        plate_number: "1666SSS",
+        model: "Cadillac escalade",
+        year: 2022,
+        picture: "https://i.ibb.co/G2Yg8T7/cadillac-escalade.webp",
+        createdAt: "2023-08-24 21:15:06",
+        updatedAt: "2023-08-24 21:15:06",
+      },
     ]);
 },
 
