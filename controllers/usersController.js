@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const usersController = {};
 
 usersController.getAllUsers = async (req, res) => {
+
   try {
     const allUsers = await User.findAll();
 
