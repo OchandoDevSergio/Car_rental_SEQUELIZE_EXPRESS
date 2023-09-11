@@ -8,6 +8,7 @@ const carsController = require('../controllers/carsController');
 
 
 router.get('/', carsController.getAllCars);
+router.get('/:criteria', carsController.searchACar);
 router.post('/', auth, isAdmin, carsController.createNewCar);
 router.put('/', auth, isAdmin, carsController.modifyCar);
 router.delete('/', auth, isAdmin, carsController.deleteCar);

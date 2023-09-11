@@ -28,6 +28,30 @@ carsController.getAllCars = async (req, res) => {
 
 }
 
+carsController.searchACar = async (req, res) => {
+  
+  try {
+
+    const cars = await Car.findOne({
+      where: { model: req.params.criteria },
+    });
+
+
+
+    return res.json({
+      success: true,
+      data: cars,
+    });
+
+} catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "No se ha encontrado el coche",
+      error: error.message,
+    }); 
+}
+}
+
 carsController.createNewCar = async (req, res) => {
   try {
 
