@@ -34,7 +34,7 @@ const Op = Sequelize.Op
 
   try {
 
-    const cars = await Car.findOne({
+    const cars = await Car.findAll({
       where: { model: {[Op.like]: `${req.params.criteria}%`}
         },
     });
