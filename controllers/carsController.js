@@ -1,5 +1,5 @@
 
-const { Car } = require('../models');
+const { Car, Sequelize } = require('../models');
 
 const carsController = {};
 
@@ -29,11 +29,14 @@ carsController.getAllCars = async (req, res) => {
 }
 
 carsController.searchACar = async (req, res) => {
-  
+
+const Op = Sequelize.Op
+
   try {
 
     const cars = await Car.findOne({
-      where: { model: req.params.criteria },
+      where: { model: {[Op.like]: `${req.params.criteria}%`}
+        },
     });
 
 
