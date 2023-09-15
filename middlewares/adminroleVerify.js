@@ -1,8 +1,6 @@
 const isAdmin = (req, res, next) => {
-
   try {
     if (req.roleId !== 1) {
-
       return res.status(501).json({
         success: true,
         message: "No tienes permisos para realizar esta acción",

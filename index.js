@@ -1,4 +1,3 @@
-
 const express = require("express");
 
 const app = express();
@@ -10,11 +9,12 @@ const router = require("./router.js");
 
 //Opciones Cors
 let corsOptions = {
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    // allowedHeaders: "Origin,X-Requested-With,Content-Type,Accept,Authorization",
-    optionsSuccessStatus: 204
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+
+  preflightContinue: false,
+  // allowedHeaders: "Origin,X-Requested-With,Content-Type,Accept,Authorization",
+  optionsSuccessStatus: 204,
 };
 
 //Esto se hace para poder trabajar con un body en formato JSON en nuestras llamadas
@@ -26,6 +26,6 @@ app.use(cors(corsOptions));
 
 app.use(router);
 
-app.listen(PORT, ()=>{
-    console.log(`Servidor levantado y a la escucha en el puerto ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Servidor levantado y a la escucha en el puerto ${PORT}`);
 });
