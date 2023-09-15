@@ -49,8 +49,6 @@ authController.login = async (req, res) => {
       }
     );
 
-    console.log(user.role_id);
-
     return res.json({
       success: true,
       message: "Usuario logeado",
