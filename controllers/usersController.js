@@ -1,10 +1,9 @@
 const { User } = require("../models");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 
 const usersController = {};
 
 usersController.getAllUsers = async (req, res) => {
-
   try {
     const allUsers = await User.findAll();
 
@@ -24,8 +23,7 @@ usersController.getAllUsers = async (req, res) => {
 
 usersController.createNewUser = async (req, res) => {
   try {
-    
-    //A continuación podemos observar expresiones regulares, este tipo de 
+    //A continuación podemos observar expresiones regulares, este tipo de
     //expresiones las podemos encontrar en internet ya configuradas,
     //sirven para devolvernos true o false al COMPARAR un valor con las propias
     //expresiones, en caso de que el valor cumpla con el formato devolverá true.
@@ -43,7 +41,7 @@ usersController.createNewUser = async (req, res) => {
       return res.json({
         success: true,
         message:
-          "La contraseña debe tener una mayúscula, una minúscula y un número. Su longitud nunca puede ser inferior a 4.",
+          "La contraseña debe contener como mínimo: una mayúscula, una minúscula y un número. Su longitud nunca puede ser inferior a 4.",
       });
     }
 
@@ -56,11 +54,10 @@ usersController.createNewUser = async (req, res) => {
       dni: req.body.dni,
       email: req.body.email,
       phone: req.body.phone,
-      password: newPassword
+      password: newPassword,
     });
 
     return res.send(newUser);
-
   } catch (error) {
     return res.json({
       success: false,
@@ -76,47 +73,43 @@ usersController.modifyUser = async (req, res) => {
   console.log(req.body.role_id);
 
   try {
-
-      const updateUser = await User.update(
-        {
-          role_id: req.body.role_id,
-          name: req.body.name,
-          surnames: req.body.surnames,
-          dni: req.body.dni,
-          email: req.body.email,
-          phone: req.body.phone
+    const updateUser = await User.update(
+      {
+        role_id: req.body.role_id,
+        name: req.body.name,
+        surnames: req.body.surnames,
+        dni: req.body.dni,
+        email: req.body.email,
+        phone: req.body.phone,
       },
       {
-                where: {
-          id: body.id
-        }
+        where: {
+          id: body.id,
+        },
       }
-      );
+    );
 
-      const dataAnswer = {
-        roleId: req.body.role_id,
-        userId: body.id,
-        userName: req.body.name,
-        userSurnames: req.body.surnames,
-        userPhone: req.body.phone,
-        userDni: req.body.dni,
-        userEmail: req.body.email
-        
-      }
-      
+    const dataAnswer = {
+      roleId: req.body.role_id,
+      userId: body.id,
+      userName: req.body.name,
+      userSurnames: req.body.surnames,
+      userPhone: req.body.phone,
+      userDni: req.body.dni,
+      userEmail: req.body.email,
+    };
 
-      return res.json({
-        success: true,
-        message: "El cliente ha sido actualizado",
-        data: dataAnswer,
-      });
-
+    return res.json({
+      success: true,
+      message: "El cliente ha sido actualizado",
+      data: dataAnswer,
+    });
   } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "No se ha podido actualizar los datos del usuario",
-        error: error.message,
-      }); 
+    return res.status(500).json({
+      success: false,
+      message: "No se ha podido actualizar los datos del usuario",
+      error: error.message,
+    });
   }
 };
 

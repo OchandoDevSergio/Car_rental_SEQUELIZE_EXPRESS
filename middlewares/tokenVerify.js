@@ -1,4 +1,3 @@
-
 const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
@@ -17,7 +16,6 @@ const auth = (req, res, next) => {
     req.userId = decoded.userId;
     req.roleId = decoded.roleId;
 
-    console.log("ye maricon, tenim el token i tot", req.userId, req.roleId)
     next();
   } catch (error) {
     return res.json({

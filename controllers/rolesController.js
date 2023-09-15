@@ -22,14 +22,11 @@ rolesController.getAllRoles = async (req, res) => {
 
 rolesController.createNewRole = async (req, res) => {
   try {
-
-
     const newRole = await User.create({
       name: req.body.name,
     });
 
     return res.send(newRole);
-
   } catch (error) {
     return res.json({
       success: false,
@@ -43,31 +40,28 @@ RolesController.modifyRole = async (req, res) => {
   let body = req.body;
 
   try {
-
-      const updateRole = await Role.update(
-        {
-          name: req.body.name,
+    const updateRole = await Role.update(
+      {
+        name: req.body.name,
       },
       {
-                where: {
-          id: body.id
-        }
+        where: {
+          id: body.id,
+        },
       }
-      );
+    );
 
-
-      return res.json({
-        success: true,
-        message: "El rol ha sido actualizado",
-        data: updateRole,
-      });
-
+    return res.json({
+      success: true,
+      message: "El rol ha sido actualizado",
+      data: updateRole,
+    });
   } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "No se ha podido actualizar los datos del rol",
-        error: error.message,
-      }); 
+    return res.status(500).json({
+      success: false,
+      message: "No se ha podido actualizar los datos del rol",
+      error: error.message,
+    });
   }
 };
 
