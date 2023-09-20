@@ -25,7 +25,7 @@ carsController.searchACar = async (req, res) => {
 
   try {
     const cars = await Car.findAll({
-      where: { model: { [Op.like]: `${req.params.criteria}%` } },
+      where: { model: { [Op.like]: `%${req.params.criteria}%` } },
     });
 
     return res.json({
